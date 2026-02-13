@@ -12,6 +12,7 @@ import { RulesModal } from './components/RulesModal';
 import { TutorialOverlay } from './components/TutorialOverlay';
 import { MenuOverlay } from './components/MenuOverlay';
 import { VictoryOverlay } from './components/VictoryOverlay';
+import { ShoLogo } from './components/ShoLogo';
 import { T } from './translations';
 
 const EXTERNAL_LOGO_URL = "https://lh3.googleusercontent.com/d/1ASVPsOb5WHhHfFGxm380UuPn6vt4M1nb";
@@ -644,8 +645,8 @@ const App: React.FC = () => {
           .animate-mic-active { animation: micPulse 1.5s ease-in-out infinite; }
         `}} />
         {phase === GamePhase.SETUP && gameMode !== null && (
-          <div className="absolute inset-0 bg-black/90 z-[200] flex flex-col items-center justify-center p-4 gap-6 animate-in fade-in duration-500">
-            <img src={EXTERNAL_LOGO_URL} alt="Logo" className="w-48 h-48 object-contain drop-shadow-2xl animate-pulse" />
+          <div className="absolute inset-0 bg-black/90 z-[200] flex flex-col items-center justify-center p-4 gap-8 animate-in fade-in duration-500">
+            <ShoLogo size="xl" />
             <div className="text-amber-500 font-cinzel text-xl text-center">
               Initializing... འགོ་འཛུགས་བཞིན་པ...
             </div>
@@ -663,7 +664,7 @@ const App: React.FC = () => {
         {phase === GamePhase.GAME_OVER && winner && (
           <div className="fixed inset-0 z-[200]">
             <div className="absolute top-10 left-1/2 -translate-x-1/2 z-[210]">
-              <img src={EXTERNAL_LOGO_URL} alt="Sho Logo" className="w-24 h-24 object-contain opacity-80" />
+              <ShoLogo size="md" showText={true} />
             </div>
             <VictoryOverlay 
               winner={winner} 
@@ -796,14 +797,10 @@ const App: React.FC = () => {
           <div className={`fixed inset-0 z-50 ${isDarkMode ? 'bg-stone-950 text-amber-500' : 'bg-stone-50 text-amber-800'} overflow-y-auto flex flex-col items-center justify-between p-6 py-6 md:py-10 transition-colors duration-500`}>
                {isSplashVisible && !isLoggedIn ? (
                  <>
-                   <div className="flex-grow flex flex-col items-center justify-center w-full max-w-md gap-6 animate-in fade-in duration-700">
+                   <div className="flex-grow flex flex-col items-center justify-center w-full max-w-md gap-10 animate-in fade-in duration-700">
                       <div className="flex flex-col items-center text-center">
-                          <img src={EXTERNAL_LOGO_URL} alt="Sho Logo" className="w-32 h-32 md:w-48 md:h-48 object-contain mb-4 drop-shadow-2xl animate-in zoom-in duration-1000" />
-                          <h1 className={`flex items-center gap-6 mb-2 font-cinzel ${isDarkMode ? 'text-amber-500' : 'text-amber-900'}`}>
-                              <span className="text-4xl md:text-6xl drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]">{T.lobby.title.bo}</span>
-                              <span className="text-2xl md:text-4xl tracking-widest drop-shadow-md">{T.lobby.title.en}</span>
-                          </h1>
-                          <div className={`h-px w-32 ${isDarkMode ? 'bg-amber-900/40' : 'bg-amber-700/20'} mb-3`} />
+                          <ShoLogo size="xl" />
+                          <div className={`h-px w-32 ${isDarkMode ? 'bg-amber-900/40' : 'bg-amber-700/20'} mt-8 mb-4`} />
                           <div className="flex flex-col gap-1 mb-6">
                               <p className={`${isDarkMode ? 'text-stone-400' : 'text-stone-500'} tracking-[0.3em] uppercase text-xs md:text-sm font-bold`}>{T.lobby.subtitle.en}</p>
                               <p className={`${isDarkMode ? 'text-stone-500' : 'text-stone-600'} font-serif text-2xl md:text-3xl leading-tight text-center`}>{T.lobby.subtitle.bo}</p>
@@ -855,8 +852,8 @@ const App: React.FC = () => {
                         </div>
                     </div>
                     <div className="flex-grow flex flex-col items-center justify-center w-full max-w-md gap-4 md:gap-8 my-2 md:my-4">
-                        <img src={EXTERNAL_LOGO_URL} alt="Sho Logo" className="w-24 h-24 object-contain mb-2 drop-shadow-xl" />
-                        <div className={`w-full ${isDarkMode ? 'bg-stone-900/30' : 'bg-white/80'} p-5 md:p-8 rounded-[3rem] border border-stone-800/20 backdrop-blur-2xl shadow-2xl`}>
+                        <ShoLogo size="md" />
+                        <div className={`w-full ${isDarkMode ? 'bg-stone-900/30' : 'bg-white/80'} p-5 md:p-8 rounded-[3rem] border border-stone-800/20 backdrop-blur-2xl shadow-2xl mt-4`}>
                             <div className="mb-8">
                                 <label className="text-stone-500 text-[10px] uppercase block mb-4 tracking-widest font-bold px-1 text-center">
                                     Choose Avatar <span className="text-stone-600 font-serif ml-1">འདྲ་པར་དོམ།</span>
@@ -933,7 +930,7 @@ const App: React.FC = () => {
                         ) : (
                             <div className={`w-full ${isDarkMode ? 'bg-stone-900/50' : 'bg-white'} border-2 border-amber-700/50 p-6 md:p-10 rounded-[3rem] animate-in fade-in zoom-in duration-300 max-h-[70vh] overflow-y-auto no-scrollbar`}>
                                 <div className="flex flex-col items-center gap-8">
-                                    <img src={EXTERNAL_LOGO_URL} alt="Sho Logo" className="w-16 h-16 object-contain opacity-60" />
+                                    <ShoLogo size="md" />
                                     <h3 className="text-xl md:text-2xl font-cinzel text-amber-500 text-center">
                                         {T.lobby.roomLobbyTitle.en} <div className="font-serif text-lg mt-1">{T.lobby.roomLobbyTitle.bo}</div>
                                     </h3>
@@ -1051,7 +1048,7 @@ const App: React.FC = () => {
                     <div className={`p-1.5 md:p-4 flex flex-col gap-0 md:gap-3 flex-shrink-0 ${isDarkMode ? 'bg-stone-950' : 'bg-white'} mobile-landscape-compact-stats`}>
                         <header className={`flex justify-between items-center border-b ${isDarkMode ? 'border-stone-800' : 'border-stone-200'} pb-1 md:pb-4`}>
                             <div className="flex items-center gap-2 cursor-pointer" onClick={resetToLobby}>
-                                <img src={EXTERNAL_LOGO_URL} alt="Logo" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
+                                <ShoLogo size="sm" showText={false} />
                                 <h1 className={`font-cinzel text-[10px] md:text-sm ${isDarkMode ? 'text-amber-500' : 'text-amber-900'}`}>Sho</h1>
                             </div>
                             <div className="flex items-center gap-2 md:gap-4">

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Player } from '../types';
 import { T } from '../translations';
+import { ShoLogo } from './ShoLogo';
 
 interface VictoryOverlayProps {
   winner: Player;
@@ -69,7 +70,7 @@ export const VictoryOverlay: React.FC<VictoryOverlayProps> = ({ winner, onRestar
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-amber-500/10 rounded-full blur-[80px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center">
-          <div className="w-24 h-24 mb-6 relative animate-victory-glow">
+          <div className="w-24 h-24 mb-10 relative animate-victory-glow">
             <div 
                 className="w-full h-full rounded-full flex items-center justify-center shadow-2xl border-4 overflow-hidden"
                 style={{ backgroundColor: winner.colorHex, borderColor: 'white' }}
